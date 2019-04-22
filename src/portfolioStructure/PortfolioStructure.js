@@ -23,8 +23,8 @@ export default (container) => {
   
   // const aspectRatio = canvas.width / canvas.height;
   // const camera = new THREE.OrthographicCamera(frustumSize * aspectRatio / - 2, frustumSize * aspectRatio / 2, frustumSize / 2, frustumSize / - 2, 1, 1000);
-  const camera = new THREE.PerspectiveCamera(10, window.innerWidth / window.innerHeight, 1, 3);
-  camera.position.z = 4000;
+  const camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 3);
+  camera.position.z = 1000;
   let controls;
   // let canvasHalfHeight;
   const table = ['Project 1', 'Project 2', 'Project 3', 'Project 4', 'Project 5'];
@@ -47,8 +47,9 @@ export default (container) => {
 
   function resizeCanvas() {
     const canvas = createCanvas(document, container);
-    canvas.style.width = '100%';
-    canvas.style.height = '100%';
+    canvas.style.width = 'auto';
+    canvas.style.height = '100vh';
+    canvas.style.perspective = 'none';
 
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
@@ -208,13 +209,13 @@ export default (container) => {
   }
   let last = 0;
   function update(timeNow) {
-    const speed = 0.5
+    const speed = 1
     requestAnimationFrame(update);
     // each 2 seconds call the createNewObject() function
     render()
     if (!last || timeNow - last >= speed * 1000) {
       last = timeNow;
-      transform(targets.table)
+      // transform(targets.table)
       // console.log(`transform function called: ${transform(targets.table)} Time passed:${timeNow}`)
 
     }
